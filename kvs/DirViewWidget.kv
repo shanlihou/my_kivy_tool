@@ -1,0 +1,44 @@
+#: import DirObj lib_kv.DirViewWidget
+
+<DirInfoView@DirInfoObj>:
+    cols: 2
+    bgColor: 0, 1, 0, 1
+    canvas.before:
+        Color:
+            rgba: self.bgColor
+        Rectangle:
+            # self here refers to the widget i.e BoxLayout
+            pos: self.pos
+            size: self.size
+    Label:
+        text_size: self.size
+        halign: 'left'
+        valign: 'center'
+        id: l_path
+    Switch:
+        id: s_path_select
+        size_hint_x: .2
+
+
+
+<DirPathRecycleView@DirPathRecycleObj>:
+    viewclass: 'DirInfoView'
+    RecycleBoxLayout:
+        default_size: None, dp(56)
+        default_size_hint: 1, None
+        size_hint_y: None
+        height: self.minimum_height
+        orientation: 'vertical'
+
+
+<DirView@DirObj>:
+    rows: 2
+    Label:
+        text_size: self.size
+        halign: 'left'
+        size_hint_y: .1
+        id: l_dirpath
+        text: r_dir_view.cur_dir
+
+    DirPathRecycleView:
+        id: r_dir_view

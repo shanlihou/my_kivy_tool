@@ -1,0 +1,2 @@
+ENCRYPT_SIZE = 128
+ENCODE_CODE = [4, 3, 9, 2, 7, 8, 1]
